@@ -49,9 +49,9 @@ class Visualizations:
         # Connect to visdom and open the corresponding window in the browser
         try:
             server_info = server.split(':')
-            if len(server_info) > 1:
-                server_addr = server_info[0]
-                server_port = int(server_info[1])
+            if len(server_info) > 2:
+                server_addr = ''.join(server_info[:2])
+                server_port = int(server_info[2])
             else:
                 server_addr = server
                 server_port = 8097
