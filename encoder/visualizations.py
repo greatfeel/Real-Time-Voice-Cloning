@@ -50,8 +50,8 @@ class Visualizations:
         try:
             server_info = server.split(':')
             if len(server_info) > 1:
-                server_addr = server[0]
-                server_port = int(server[1])
+                server_addr = server_info[0]
+                server_port = int(server_info[1])
             else:
                 server_addr = server
                 server_port = 8097
