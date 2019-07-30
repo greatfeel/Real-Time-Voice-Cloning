@@ -48,7 +48,15 @@ class Visualizations:
         
         # Connect to visdom and open the corresponding window in the browser
         try:
-            self.vis = visdom.Visdom(server, env=self.env_name, raise_exceptions=True)
+            server_info = server.split(':')
+            if len(server_info) > 1:
+                server_addr = server[0]
+                server_port = int(server[1])
+            else:
+                server_addr = server
+                server_port = 8097
+
+            self.vis = visdom.Visdom(server_addr, port=server_port, env=self.env_name, raise_exceptions=True)
         except ConnectionError:
             raise Exception("No visdom server detected. Run the command \"visdom\" in your CLI to "
                             "start it.")
